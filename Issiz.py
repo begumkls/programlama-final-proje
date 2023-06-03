@@ -24,3 +24,19 @@ class Issiz(Insan):
             mavi_yaka_etkisi = mavi_yaka * 0.2
             beyaz_yaka_etkisi = beyaz_yaka * 0.35
             yonetici_etkisi = yonetici * 0.45 
+            
+            max_etki = max(mavi_yaka_etkisi, beyaz_yaka_etkisi, yonetici_etkisi)
+            
+            if max_etki == mavi_yaka_etkisi:
+                return "mavi yaka"
+            elif max_etki == beyaz_yaka_etkisi:
+                return "beyaz yaka"
+            else:
+                return "yonetici"
+            
+        except Exception as e:
+            print("Hata:", str(e))
+            return None
+
+    def __str__(self):
+        return f"Ad: {self.get_ad()}\nSoyad: {self.get_soyad()}\nUygun Statü: {self.get_statu()}"
