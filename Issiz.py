@@ -4,7 +4,7 @@ from Insan import Insan # Insan sınıfı import edildi
 class Issiz(Insan): # Insan sınıfından türetilen Calisan sınıfı oluşturuldu
     # değişkenlerin sınıf içerisinde kullanımını sağlayan init fonksiyonu oluşturuldu
     def __init__(self, tc_no, ad, soyad, yas, cinsiyet, uyruk, statu, tecrubeler):
-        super().__init__(tc_no, ad, soyad, yas, cinsiyet, uyruk)
+        super().__init__(tc_no, ad, soyad, yas, cinsiyet, uyruk) #super() fonksiyonu üst sınıftaki özelliklerin kullanılmasını sağlar.
         self.__tecrubeler = tecrubeler
         self.__statu = self.statu_bul()
 

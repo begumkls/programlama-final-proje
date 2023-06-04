@@ -1,4 +1,4 @@
-from Calisan import Calisan #v Calisan sınıfı import edildi
+from Calisan import Calisan # Calisan sınıfı import edildi
 
 class MaviYaka(Calisan): # Calisan sınıfından türerilen MaviYaka sınıfı oluşturuldu
     def __init__(self, tc_no, ad, soyad, yas, cinsiyet, uyruk, tecrube, maas, yipranma_payi, sektor=""):

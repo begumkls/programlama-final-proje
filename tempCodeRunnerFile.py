@@ -1,0 +1,1 @@
+yeni_maas_ustunde_olanlar.iloc[2:5, [1, 12]]

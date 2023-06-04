@@ -1,4 +1,4 @@
-class Insan: # Insna sınıfı oluşturuldu
+class Insan: # Insan sınıfı oluşturuldu
     
     # değişkenlerin sınıf içerisinde kullanımını sağlayan init fonksiyonu oluşturuldu
     def __init__(self, tc_no, ad, soyad, yas, cinsiyet, uyruk):
