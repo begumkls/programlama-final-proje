@@ -22,7 +22,7 @@ try:
     
     # Issiz sınıfı için nesne atamaları yapıldı
     issiz1_tecrubeler = {
-    "mavi yaka": 3,
+    "mavi yaka": 6,
     "beyaz yaka": 2,
     "yönetici": 2
     }
