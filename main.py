@@ -91,3 +91,74 @@ try:
     
 except Exception as e:
     print("Bir hata oluştu:", e)
+    
+# DataFrame
+
+# Boş bir DataFrame oluşturma
+df = pd.DataFrame(columns=['nesne', 'tc_no', 'ad', 'soyad', 'yas', 'cinsiyet', 'uyruk', 'sektor', 'tecrube', 'maas', 'yipranma_payi', 'tesvik_primi', 'yeni_maas'])
+df.fillna(0, inplace=True)
+
+# Çalışanların Nesnesi
+calisan_data = ['çalışan', calisan1.get_tc_no(), calisan1.get_ad(), calisan1.get_soyad(), calisan1.get_yas(), calisan1.get_cinsiyet(), calisan1.get_uyruk(), calisan1.get_sektor(), calisan1.get_tecrube(), calisan1.get_maas(), 0, 0, calisan1.zam_hakki()]
+df.loc[len(df)] = calisan_data
+calisan_data = ['çalışan', calisan2.get_tc_no(), calisan2.get_ad(), calisan2.get_soyad(), calisan2.get_yas(), calisan2.get_cinsiyet(), calisan2.get_uyruk(), calisan2.get_sektor(), calisan2.get_tecrube(), calisan2.get_maas(), 0, 0, calisan2.zam_hakki()]
+df.loc[len(df)] = calisan_data
+calisan_data = ['çalışan', calisan3.get_tc_no(), calisan3.get_ad(), calisan3.get_soyad(), calisan3.get_yas(), calisan3.get_cinsiyet(), calisan3.get_uyruk(), calisan3.get_sektor(), calisan3.get_tecrube(), calisan3.get_maas(), 0, 0, calisan3.zam_hakki()]
+df.loc[len(df)] = calisan_data
+
+# Mavi Yakalıların Nesnesi
+maviyaka_data = ['mavi yaka', maviyaka1.get_tc_no(), maviyaka1.get_ad(), maviyaka1.get_soyad(), maviyaka1.get_yas(), maviyaka1.get_cinsiyet(), maviyaka1.get_uyruk(), '', maviyaka1.get_tecrube(), maviyaka1.get_maas(), maviyaka1.get_yipranma_payi(), 0, maviyaka1.zam_hakki()]
+df.loc[len(df)] = maviyaka_data
+maviyaka_data = ['mavi yaka', maviyaka2.get_tc_no(), maviyaka2.get_ad(), maviyaka2.get_soyad(), maviyaka2.get_yas(), maviyaka2.get_cinsiyet(), maviyaka2.get_uyruk(), '', maviyaka2.get_tecrube(), maviyaka2.get_maas(), maviyaka2.get_yipranma_payi(), 0, maviyaka2.zam_hakki()]
+df.loc[len(df)] = maviyaka_data
+maviyaka_data = ['mavi yaka', maviyaka3.get_tc_no(), maviyaka3.get_ad(), maviyaka3.get_soyad(), maviyaka3.get_yas(), maviyaka3.get_cinsiyet(), maviyaka3.get_uyruk(), '', maviyaka3.get_tecrube(), maviyaka3.get_maas(), maviyaka3.get_yipranma_payi(), 0, maviyaka3.zam_hakki()]
+df.loc[len(df)] = maviyaka_data
+
+# Beyaz Yakalıların Nesnesi
+beyazyaka_data = ['beyaz yaka', beyazyaka1.get_tc_no(), beyazyaka1.get_ad(), beyazyaka1.get_soyad(), beyazyaka1.get_yas(), beyazyaka1.get_cinsiyet(), beyazyaka1.get_uyruk(), '', beyazyaka1.get_tecrube(), beyazyaka1.get_maas(), 0, beyazyaka1.get_tesvik_primi(), beyazyaka1.zam_hakki()]
+df.loc[len(df)] = beyazyaka_data
+beyazyaka_data = ['beyaz yaka', beyazyaka2.get_tc_no(), beyazyaka2.get_ad(), beyazyaka2.get_soyad(), beyazyaka2.get_yas(), beyazyaka2.get_cinsiyet(), beyazyaka2.get_uyruk(), '', beyazyaka2.get_tecrube(), beyazyaka2.get_maas(), 0, beyazyaka2.get_tesvik_primi(), beyazyaka2.zam_hakki()]
+df.loc[len(df)] = beyazyaka_data
+beyazyaka_data = ['beyaz yaka', beyazyaka3.get_tc_no(), beyazyaka3.get_ad(), beyazyaka3.get_soyad(), beyazyaka3.get_yas(), beyazyaka3.get_cinsiyet(), beyazyaka3.get_uyruk(), '', beyazyaka3.get_tecrube(), beyazyaka3.get_maas(), 0, beyazyaka3.get_tesvik_primi(), beyazyaka3.zam_hakki()]
+df.loc[len(df)] = beyazyaka_data
+
+# DataFrame üzerinde gruplama ve ortalama hesaplama
+grouped_df = df.groupby('nesne')[['tecrube', 'yeni_maas']].mean()
+print()
+# Sonuçları yazdırma
+print("Beyaz Yaka, Mavi Yaka ve Çalışanların tecrübe ve yeni maaşlarının ortalama değerleri:")
+print(grouped_df.to_string())
+print()
+
+# Maaşı 15000 üstünde olanları yazdırma
+maas_ustunde_olanlar = df[df['maas'] > 15000]
+toplam_maas_ustunde_olanlar = len(maas_ustunde_olanlar)
+print("---------------------")
+print("Maaşı 15000 TL üzerinde olanların toplam sayısı:", toplam_maas_ustunde_olanlar)
+print("---------------------")
+print()
+
+siralanan_df = df.sort_values('yeni_maas')
+print("Yeni Maaşa Göre Küçükten Büyüğe Sıralanmış Veriler:")
+print()
+print(siralanan_df.to_string(index=False))
+print()
+
+tecrube_ustunde_beyazyakalar = df[(df['nesne'] == 'beyaz yaka') & (df['tecrube'] > 3)]
+print("Tecrübesi 3 yıldan fazla olan beyaz yakalar:")
+print(tecrube_ustunde_beyazyakalar.to_string(index=False))
+print()
+
+yeni_maas_ustunde_olanlar = df[df['yeni_maas'] > 10000]
+satir_secimi = yeni_maas_ustunde_olanlar.iloc[2:5, [1, 12]]
+print("Yeni Maaş Değeri 10000 TL üzerinde olanların tc no ve yeni maaş değerleri:")
+print(satir_secimi.to_string(index=False))
+print()
+
+yeni_df = df[['ad', 'soyad', 'sektor', 'yeni_maas']]
+print("Yeni DataFrame:")
+print(yeni_df.to_string(index=False))
+print()
+
+# DataFrame'i Excel dosyasına kaydetme
+df.to_excel("veriler.xlsx", index=False)
