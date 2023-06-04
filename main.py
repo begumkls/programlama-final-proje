@@ -137,3 +137,25 @@ print("---------------------")
 print("Maaşı 15000 TL üzerinde olanların toplam sayısı:", toplam_maas_ustunde_olanlar)
 print("---------------------")
 print()
+
+siralanan_df = df.sort_values('yeni_maas')
+print("Yeni Maaşa Göre Küçükten Büyüğe Sıralanmış Veriler:")
+print()
+print(siralanan_df.to_string(index=False))
+print()
+
+tecrube_ustunde_beyazyakalar = df[(df['nesne'] == 'beyaz yaka') & (df['tecrube'] > 3)]
+print("Tecrübesi 3 yıldan fazla olan beyaz yakalar:")
+print(tecrube_ustunde_beyazyakalar.to_string(index=False))
+print()
+
+yeni_maas_ustunde_olanlar = df[df['yeni_maas'] > 10000]
+satir_secimi = yeni_maas_ustunde_olanlar.iloc[2:5, [1, 12]]
+print("Yeni Maaş Değeri 10000 TL üzerinde olanların tc no ve yeni maaş değerleri:")
+print(satir_secimi.to_string(index=False))
+print()
+
+yeni_df = df[['ad', 'soyad', 'sektor', 'yeni_maas']]
+print("Yeni DataFrame:")
+print(yeni_df.to_string(index=False))
+print()
