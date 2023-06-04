@@ -1,12 +1,13 @@
-from Calisan import Calisan
+from Calisan import Calisan #v Calisan sınıfı import edildi
 
-class MaviYaka(Calisan):
+class MaviYaka(Calisan): # Calisan sınıfından türerilen MaviYaka sınıfı oluşturuldu
     def __init__(self, tc_no, ad, soyad, yas, cinsiyet, uyruk, tecrube, maas, yipranma_payi, sektor=""):
         super().__init__(tc_no, ad, soyad, yas, cinsiyet, uyruk, sektor, tecrube, maas)
         self.__tecrube = tecrube
         self.__maas = maas
         self.__yipranma_payi = yipranma_payi
 
+    # değişkenlerin kontrolünü sağlayan get/set fonksiyonları oluşturuldu
     def get_tecrube(self):
         return self.__tecrube
 
@@ -44,9 +45,9 @@ class MaviYaka(Calisan):
             else:
                 return yeni_maas
 
-        except Exception as e:
+        except Exception as e: # oluşacak bir hatanın kontrolü try except blokları ile yapıldı
             print("Hata:", str(e))
             return None
 
-    def __str__(self):
-        return f"Mavi Yaka - \nAd: {self.get_ad()}\nSoyad: {self.get_soyad()}\nTecrübe: {self.get_tecrube()} yıl\nYeni Maaş: {self.zam_hakki()}"
+    def __str__(self): # Ekrana bilgilerin yazdıırlmasını sağlayan str fonksiyonu oluşturuldu
+        return f"\n\n------ Mavi Yaka ------ \nAd: {self.get_ad()}\nSoyad: {self.get_soyad()}\nTecrübe: {self.get_tecrube()} yıl\nYeni Maaş: {self.zam_hakki()}"

@@ -1,11 +1,12 @@
-from Insan import Insan
+from Insan import Insan # Insna sınıfı import edildi
 
-class Issiz(Insan):
+class Issiz(Insan): # Insna sınıfından türerilen Issiz sınıfı oluşturuldu
     def __init__(self, tc_no, ad, soyad, yas, cinsiyet, uyruk, statu, tecrubeler):
         super().__init__(tc_no, ad, soyad, yas,cinsiyet, uyruk)
         self.__tecrubeler = tecrubeler
         self.__statu = self.statu_bul()
-        
+    
+    # değişkenlerin kontrolünü sağlayan get/set fonksiyonları oluşturuldu
     def get_tecrubeler(self):
         return self.__tecrubeler
     
@@ -15,6 +16,7 @@ class Issiz(Insan):
     def get_statu(self):
         return self.__statu
     
+    # Issiz sınıfındaki verilerden uygun statü ataması yapan fonksiyon oluşturuldu
     def statu_bul(self):
         try:
             mavi_yaka = self.__tecrubeler.get("mavi yaka", 0)
@@ -34,9 +36,9 @@ class Issiz(Insan):
             else:
                 return "yonetici"
             
-        except Exception as e:
+        except Exception as e: # oluşacak bir hatanın kontrolü try except blokları ile yapıldı
             print("Hata:", str(e))
             return None
 
-    def __str__(self):
+    def __str__(self): # Ekrana bilgilerin yazdıırlmasını sağlayan str fonksiyonu oluşturuldu
         return f"Ad: {self.get_ad()}\nSoyad: {self.get_soyad()}\nUygun Statü: {self.get_statu()}"

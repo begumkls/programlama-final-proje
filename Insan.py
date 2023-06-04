@@ -1,4 +1,6 @@
-class Insan:
+class Insan: # Insna sınıfı oluşturuldu
+    
+    # değişkenlerin sınıf içerisinde kullanımını sağlayan init fonksiyonu oluşturuldu
     def __init__(self, tc_no, ad, soyad, yas, cinsiyet, uyruk):
         self.__tc_no = tc_no
         self.__ad = ad
@@ -6,7 +8,8 @@ class Insan:
         self.__yas = yas
         self.__cinsiyet = cinsiyet
         self.__uyruk = uyruk
-        
+    
+    # değişkenlerin kontrolünü sağlayan get/set fonksiyonları oluşturuldu    
     def get_tc_no(self):
         return self.__tc_no
     
@@ -43,5 +46,5 @@ class Insan:
     def set_uyruk(self, uyruk):
         self.__uyruk = uyruk
 
-    def __str__(self):
-        return f"TC No: {self.__tc_no}\nAd: {self.__ad}\nSoyad: {self.__soyad}\nYaş: {self.__yas}\nCinsiyet: {self.__cinsiyet}\nUyruk: {self.__uyruk}"
+    def __str__(self): # Ekrana bilgilerin yazdıırlmasını sağlayan str fonksiyonu oluşturuldu
+        return f"TC Numarası: {self.__tc_no}\nAd: {self.__ad}\nSoyad: {self.__soyad}\nYaş: {self.__yas}\nCinsiyet: {self.__cinsiyet}\nUyruk: {self.__uyruk}"

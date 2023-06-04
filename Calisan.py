@@ -1,12 +1,13 @@
-from Insan import Insan
+from Insan import Insan # Insan sınıfı import edildi
 
-class Calisan(Insan):
+class Calisan(Insan): # Insna sınıfından türetilen Calisan sınıfı oluşturuldu
     def __init__(self, tc_no, ad, soyad, yas, cinsiyet, uyruk, sektor, tecrube, maas):
         super().__init__(tc_no, ad, soyad, yas, cinsiyet, uyruk)
         self.__sektor = self.sektor_kontrol(sektor)
         self.__tecrube = tecrube
         self.__maas = maas
 
+    # değişkenlerin kontrolünü sağlayan get/set fonksiyonları oluşturuldu
     def get_sektor(self):
         return self.__sektor
 
@@ -32,6 +33,8 @@ class Calisan(Insan):
             return sektor.lower()
         else:
             return "diğer"  # Geçersiz sektor değeri girilirse varsayılan olarak "diğer" seçiliyor
+        
+    # zam hakkını hesaplayan fonksiyon oluşturuldu
     def zam_hakki(self):
         try:
             tecrube = self.get_tecrube()
@@ -53,9 +56,9 @@ class Calisan(Insan):
             else:
                 return yeni_maas
 
-        except Exception as e:
+        except Exception as e: # oluşacak bir hatanın kontrolü try except blokları ile yapıldı
             print("Hata:", str(e))
             return None
 
-    def __str__(self):
+    def __str__(self): # Ekrana bilgilerin yazdıırlmasını sağlayan str fonksiyonu oluşturuldu
         return f"Ad: {self.get_ad()}, Soyad: {self.get_soyad()}, Sektör: {self.__sektor}, Tecrübe: {self.get_tecrube()}, Yeni Maaş: {self.zam_hakki()}"
