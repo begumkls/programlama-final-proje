@@ -121,3 +121,19 @@ beyazyaka_data = ['beyaz yaka', beyazyaka2.get_tc_no(), beyazyaka2.get_ad(), bey
 df.loc[len(df)] = beyazyaka_data
 beyazyaka_data = ['beyaz yaka', beyazyaka3.get_tc_no(), beyazyaka3.get_ad(), beyazyaka3.get_soyad(), beyazyaka3.get_yas(), beyazyaka3.get_cinsiyet(), beyazyaka3.get_uyruk(), '', beyazyaka3.get_tecrube(), beyazyaka3.get_maas(), 0, beyazyaka3.get_tesvik_primi(), beyazyaka3.zam_hakki()]
 df.loc[len(df)] = beyazyaka_data
+
+# DataFrame üzerinde gruplama ve ortalama hesaplama
+grouped_df = df.groupby('nesne')[['tecrube', 'yeni_maas']].mean()
+print()
+# Sonuçları yazdırma
+print("Beyaz Yaka, Mavi Yaka ve Çalışanların tecrübe ve yeni maaşlarının ortalama değerleri:")
+print(grouped_df.to_string())
+print()
+
+# Maaşı 15000 üstünde olanları yazdırma
+maas_ustunde_olanlar = df[df['maas'] > 15000]
+toplam_maas_ustunde_olanlar = len(maas_ustunde_olanlar)
+print("---------------------")
+print("Maaşı 15000 TL üzerinde olanların toplam sayısı:", toplam_maas_ustunde_olanlar)
+print("---------------------")
+print()
