@@ -159,3 +159,6 @@ yeni_df = df[['ad', 'soyad', 'sektor', 'yeni_maas']]
 print("Yeni DataFrame:")
 print(yeni_df.to_string(index=False))
 print()
+
+# DataFrame'i Excel dosyasına kaydetme
+df.to_excel("veriler.xlsx", index=False)
