@@ -24,3 +24,29 @@ class MaviYaka(Calisan):
 
     def set_yipranma_payi(self, yipranma_payi):
         self.__yipranma_payi = yipranma_payi
+        
+    def zam_hakki(self):
+        try:
+            maas = self.get_maas()
+            tecrube = self.get_tecrube()
+
+            if tecrube < 2:
+                zam_orani = self.__yipranma_payi * 10
+            elif tecrube >= 2 and tecrube <= 4 and maas < 15000:
+                zam_orani = (maas % tecrube) / 2 + self.__yipranma_payi * 10
+            elif tecrube > 4 and maas < 25000:
+                zam_orani = (maas % tecrube) / 3 + self.__yipranma_payi * 10
+            else:
+                zam_orani = 0
+            yeni_maas = maas + (maas * zam_orani / 100)
+            if yeni_maas == maas:
+                return maas
+            else:
+                return yeni_maas
+
+        except Exception as e:
+            print("Hata:", str(e))
+            return None
+
+    def __str__(self):
+        return f"Mavi Yaka - \nAd: {self.get_ad()}\nSoyad: {self.get_soyad()}\nTecrübe: {self.get_tecrube()} yıl\nYeni Maaş: {self.zam_hakki()}"
