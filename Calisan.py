@@ -1,6 +1,7 @@
 from Insan import Insan # Insan sınıfı import edildi
 
-class Calisan(Insan): # Insna sınıfından türetilen Calisan sınıfı oluşturuldu
+class Calisan(Insan): # Insan sınıfından türetilen Calisan sınıfı oluşturuldu
+    # değişkenlerin sınıf içerisinde kullanımını sağlayan init fonksiyonu oluşturuldu
     def __init__(self, tc_no, ad, soyad, yas, cinsiyet, uyruk, sektor, tecrube, maas):
         super().__init__(tc_no, ad, soyad, yas, cinsiyet, uyruk)
         self.__sektor = self.sektor_kontrol(sektor)
