@@ -56,10 +56,11 @@ try:
     statu1 = input("Lütfen 1. Çalışanın Statüsünü giriniz (teknoloji, muhasebe, inşaat, diğer):")
     statu2 = input("Lütfen 2. Çalışanın Statüsünü giriniz (teknoloji, muhasebe, inşaat, diğer):")
     statu3 = input("Lütfen 3. Çalışanın Statüsünü giriniz (teknoloji, muhasebe, inşaat, diğer):")
-        
-    calisan1 = Calisan("00486547895", "Mustafa", "Kanmaz", 27, "Erkek", "Türk", statu1, 2, 12500)
-    calisan2 = Calisan("0000000005", "Semiha", "Gül", 34, "Kadın", "Türk", statu2, 7, 17200)
-    calisan3 = Calisan("0085410320", "Cenk", "Demir", 42, "Erkek", "Türk", statu3, 8, 21000)
+    
+    # Calisan sınıfı için nesneler atandı    
+    calisan1 = Calisan("00486547895", "Mustafa", "Kanmaz", 27, "Erkek", "Türk", statu1, 24, 6500)
+    calisan2 = Calisan("00000000050", "Semiha", "Gül", 34, "Kadın", "Türk", statu2, 76, 10200)
+    calisan3 = Calisan("00854103200", "Cenk", "Demir", 42, "Erkek", "Türk", statu3, 58, 8000)
     print()
     print("Çalışan Bilgileri:")
     print(calisan1)
@@ -69,18 +70,18 @@ try:
     print()
 
     # MaviYaka sınıfı için nesneler atandı
-    maviyaka1 = MaviYaka("55555555555", "Gürkan", "Sedef", 32, "Erkek", "Türk", 2, 14500, 5)
-    maviyaka2 = MaviYaka("98546715840", "Zeynep", "Demir", 35, "Kadın", "Türk", 7, 15000, 8)
-    maviyaka3 = MaviYaka("00005485694", "Murat", "Kara", 42, "Erkek", "Türk", 10, 21000, 6)
+    maviyaka1 = MaviYaka("55555555555", "Gürkan", "Sedef", 32, "Erkek", "Türk", 2, 7500, 0.5)
+    maviyaka2 = MaviYaka("98546715840", "Zeynep", "Demir", 35, "Kadın", "Türk", 6, 15100, 0.2)
+    maviyaka3 = MaviYaka("00005485694", "Murat", "Kara", 42, "Erkek", "Türk", 5, 9000, 0.3)
     print("Mavi Yaka Bilgileri:")
     print(maviyaka1)
     print(maviyaka2)
     print(maviyaka3)
     print()
     # BeyazYaka sınıfı için nesneler atandı
-    beyazyaka1 = BeyazYaka("11111111111", "Burak", "Yılmaz", 31, "Erkek", "Türk", 3, 16000, 2000)
-    beyazyaka2 = BeyazYaka("22222222222", "Sıla", "Demir", 36, "Kadın", "Türk", 6, 18000, 1600)
-    beyazyaka3 = BeyazYaka("33333333333", "Barış", "Kaya", 29, "Erkek", "Türk", 1, 11000, 1000)
+    beyazyaka1 = BeyazYaka("11111111111", "Burak", "Yılmaz", 31, "Erkek", "Türk", 4, 8750, 1200)
+    beyazyaka2 = BeyazYaka("22222222222", "Sıla", "Demir", 36, "Kadın", "Türk", 5, 9000, 1600)
+    beyazyaka3 = BeyazYaka("33333333333", "Barış", "Kaya", 29, "Erkek", "Türk", 1, 5000, 500)
     print("Beyaz Yaka Bilgileri:")
     print(beyazyaka1)
     print(beyazyaka2)
@@ -94,16 +95,16 @@ except Exception as e:
     
 # DataFrame
 
-# Boş bir DataFrame oluşturma
+# Boş bir DataFrame oluşturuldu
 df = pd.DataFrame(columns=['nesne', 'tc_no', 'ad', 'soyad', 'yas', 'cinsiyet', 'uyruk', 'sektor', 'tecrube', 'maas', 'yipranma_payi', 'tesvik_primi', 'yeni_maas'])
 df.fillna(0, inplace=True)
 
 # Çalışanların Nesnesi
-calisan_data = ['çalışan', calisan1.get_tc_no(), calisan1.get_ad(), calisan1.get_soyad(), calisan1.get_yas(), calisan1.get_cinsiyet(), calisan1.get_uyruk(), calisan1.get_sektor(), calisan1.get_tecrube(), calisan1.get_maas(), 0, 0, calisan1.zam_hakki()]
+calisan_data = ['çalışan', calisan1.get_tc_no(), calisan1.get_ad(), calisan1.get_soyad(), calisan1.get_yas(), calisan1.get_cinsiyet(), calisan1.get_uyruk(), calisan1.get_sektor(), calisan1.get_tecrube() // 12, calisan1.get_maas(), 0, 0, calisan1.zam_hakki()]
 df.loc[len(df)] = calisan_data
-calisan_data = ['çalışan', calisan2.get_tc_no(), calisan2.get_ad(), calisan2.get_soyad(), calisan2.get_yas(), calisan2.get_cinsiyet(), calisan2.get_uyruk(), calisan2.get_sektor(), calisan2.get_tecrube(), calisan2.get_maas(), 0, 0, calisan2.zam_hakki()]
+calisan_data = ['çalışan', calisan2.get_tc_no(), calisan2.get_ad(), calisan2.get_soyad(), calisan2.get_yas(), calisan2.get_cinsiyet(), calisan2.get_uyruk(), calisan2.get_sektor(), calisan2.get_tecrube() // 12, calisan2.get_maas(), 0, 0, calisan2.zam_hakki()]
 df.loc[len(df)] = calisan_data
-calisan_data = ['çalışan', calisan3.get_tc_no(), calisan3.get_ad(), calisan3.get_soyad(), calisan3.get_yas(), calisan3.get_cinsiyet(), calisan3.get_uyruk(), calisan3.get_sektor(), calisan3.get_tecrube(), calisan3.get_maas(), 0, 0, calisan3.zam_hakki()]
+calisan_data = ['çalışan', calisan3.get_tc_no(), calisan3.get_ad(), calisan3.get_soyad(), calisan3.get_yas(), calisan3.get_cinsiyet(), calisan3.get_uyruk(), calisan3.get_sektor(), calisan3.get_tecrube() // 12, calisan3.get_maas(), 0, 0, calisan3.zam_hakki()]
 df.loc[len(df)] = calisan_data
 
 # Mavi Yakalıların Nesnesi
@@ -128,38 +129,41 @@ grouped_df['Liste Numarası'] = grouped_df.index + 1
 grouped_df = grouped_df.set_index('Liste Numarası') # Liste numaraları indeks olarak ayarlandı
 print()
 # Sonuçları yazdırma
-print("Beyaz Yaka, Mavi Yaka ve Çalışanların tecrübe ve yeni maaşlarının ortalama değerleri:")
-print(grouped_df.to_string(index=True))
+print("Beyaz Yaka, Mavi Yaka ve Çalışanların tecrübe ve yeni maaşlarının ortalama değerleri:\n")
+print(grouped_df.to_string(index=True, float_format="{:.2f}".format))
 print()
 
 # Maaşı 15000 üstünde olanları yazdırma
 maas_ustunde_olanlar = df[df['maas'] > 15000].reset_index(drop=True)
 toplam_maas_ustunde_olanlar = len(maas_ustunde_olanlar)
-print("---------------------")
+print("\n\n----------------------------------------------------------")
 print("Maaşı 15000 TL üzerinde olanların toplam sayısı:", toplam_maas_ustunde_olanlar)
-print("---------------------")
-print()
+print("----------------------------------------------------------\n")
 
+# Maaşa göre küçükten büyüğe sıralanan veriler
 siralanan_df = df.sort_values('yeni_maas').reset_index(drop=True)
-print("Yeni Maaşa Göre Küçükten Büyüğe Sıralanmış Veriler:")
-print()
-print(siralanan_df.to_string(index=True))
+print("Yeni Maaşa Göre Küçükten Büyüğe Sıralanmış Veriler:\n")
+print(siralanan_df.to_string(index=True, float_format="{:.2f}".format))
 print()
 
+# Tecrübesi 3 yıldan fazla olan beyaz yakalar
 tecrube_ustunde_beyazyakalar = df[(df['nesne'] == 'beyaz yaka') & (df['tecrube'] > 3)].reset_index(drop=True)
-print("Tecrübesi 3 yıldan fazla olan beyaz yakalar:")
+print("\n\n----------------------------------------------------------\n")
+print("Tecrübesi 3 yıldan fazla olan beyaz yakalar:\n")
 print(tecrube_ustunde_beyazyakalar.to_string(index=True))
-print()
 
+# Yeni maaş değeri 10000 üzerinde olan 2 ile 5. satır arasındaki veriler
 yeni_maas_ustunde_olanlar = df[df['yeni_maas'] > 10000].reset_index(drop=True)
 satir_secimi = yeni_maas_ustunde_olanlar.iloc[2:5, [1, 12]]
-print("Yeni Maaş Değeri 10000 TL üzerinde olanların tc no ve yeni maaş değerleri:")
-print(satir_secimi.to_string(index=True))
-print()
+print("\n----------------------------------------------------------\n")
+print("Yeni Maaş Değeri 10000 TL üzerinde olanların tc no ve yeni maaş değerleri:\n")
+print(satir_secimi.to_string(index=True, float_format="{:.2f}".format))
 
+# Mevcut DataFrame'deki ad, soyad, sektor, yeni_maas değerlerinden yeni DataFrame oluşturma
 yeni_df = df[['ad', 'soyad', 'sektor', 'yeni_maas']]
-print("Yeni DataFrame:")
-print(yeni_df.to_string(index=True))
+print("\n----------------------------------------------------------\n")
+print("Yeni DataFrame:\n")
+print(yeni_df.to_string(index=True, float_format="{:.2f}".format))
 print()
 
 # DataFrame'i Excel dosyasına kaydetme

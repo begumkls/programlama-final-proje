@@ -7,6 +7,7 @@ class Calisan(Insan): # Insan sınıfından türetilen Calisan sınıfı oluştu
         self.__sektor = self.sektor_kontrol(sektor)
         self.__tecrube = tecrube
         self.__maas = maas
+        self.__yeni_maas = None
 
     # değişkenlerin kontrolünü sağlayan get/set fonksiyonları oluşturuldu
     def get_sektor(self):
@@ -26,7 +27,7 @@ class Calisan(Insan): # Insan sınıfından türetilen Calisan sınıfı oluştu
 
     def set_maas(self, maas):
         self.__maas = maas
-        
+    # kullanıcıdan alınan sektör girişinin kontrolünü yapan fonksiyon oluşturuldu    
     def sektor_kontrol(self, sektor):
         sektorler = ["teknoloji", "muhasebe", "inşaat", "diğer"]
 
@@ -38,28 +39,29 @@ class Calisan(Insan): # Insan sınıfından türetilen Calisan sınıfı oluştu
     # zam hakkını hesaplayan fonksiyon oluşturuldu
     def zam_hakki(self):
         try:
-            tecrube = self.get_tecrube()
+            tecrube = self.get_tecrube()  
             maas = self.get_maas()
 
-            if tecrube < 2:
+            if tecrube < 24:
                 zam_orani = 0
-            elif tecrube >= 2 and tecrube <= 4 and maas < 15000:
-                zam_orani = maas * tecrube / 100
-            elif tecrube > 4 and maas < 25000:
-                zam_orani = (maas * tecrube) / 200
+            elif tecrube >= 24 and tecrube <= 48 and maas < 15000:
+                zam_orani = maas % tecrube
+            elif tecrube > 48 and maas < 25000:
+                zam_orani = (maas % tecrube)/ 2
             else:
                 zam_orani = 0
 
-            yeni_maas = maas + zam_orani
+            self.__yeni_maas = maas * zam_orani
 
-            if yeni_maas == maas:
-                return maas
+            if self.__yeni_maas == maas:
+                self.__yeni_maas = maas
             else:
-                return yeni_maas
+                return self.__yeni_maas
 
         except Exception as e: # oluşacak bir hatanın kontrolü try except blokları ile yapıldı
             print("Hata:", str(e))
             return None
 
-    def __str__(self): # Ekrana bilgilerin yazdıırlmasını sağlayan str fonksiyonu oluşturuldu
-        return f"Ad: {self.get_ad()}, Soyad: {self.get_soyad()}, Sektör: {self.__sektor}, Tecrübe: {self.get_tecrube()}, Yeni Maaş: {self.zam_hakki()}"
+    def __str__(self): # Ekrana bilgilerin yazdırılmasını sağlayan str fonksiyonu oluşturuldu
+        self.zam_hakki()
+        return f"Ad: {self.get_ad()}, Soyad: {self.get_soyad()}, Sektör: {self.__sektor}, Tecrübe: {self.get_tecrube()} Ay, Yeni Maaş: {self.__yeni_maas:.2f}"

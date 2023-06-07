@@ -46,5 +46,5 @@ class Insan: # Insan sınıfı oluşturuldu
     def set_uyruk(self, uyruk):
         self.__uyruk = uyruk
 
-    def __str__(self): # Ekrana bilgilerin yazdıırlmasını sağlayan str fonksiyonu oluşturuldu
+    def __str__(self): # Ekrana bilgilerin yazdırılmasını sağlayan str fonksiyonu oluşturuldu
         return f"TC Numarası: {self.__tc_no}\nİsim: {self.__ad}\nSoyisim: {self.__soyad}\nYaş: {self.__yas}\nCinsiyet: {self.__cinsiyet}\nUyruk: {self.__uyruk}"
