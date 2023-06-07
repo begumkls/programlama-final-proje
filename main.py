@@ -123,42 +123,44 @@ beyazyaka_data = ['beyaz yaka', beyazyaka3.get_tc_no(), beyazyaka3.get_ad(), bey
 df.loc[len(df)] = beyazyaka_data
 
 # DataFrame üzerinde gruplama ve ortalama hesaplama
-grouped_df = df.groupby('nesne')[['tecrube', 'yeni_maas']].mean()
+grouped_df = df.groupby('nesne')[['tecrube', 'yeni_maas']].mean().reset_index()
+grouped_df['Liste Numarası'] = grouped_df.index + 1
+grouped_df = grouped_df.set_index('Liste Numarası') # Liste numaraları indeks olarak ayarlandı
 print()
 # Sonuçları yazdırma
 print("Beyaz Yaka, Mavi Yaka ve Çalışanların tecrübe ve yeni maaşlarının ortalama değerleri:")
-print(grouped_df.to_string())
+print(grouped_df.to_string(index=True))
 print()
 
 # Maaşı 15000 üstünde olanları yazdırma
-maas_ustunde_olanlar = df[df['maas'] > 15000]
+maas_ustunde_olanlar = df[df['maas'] > 15000].reset_index(drop=True)
 toplam_maas_ustunde_olanlar = len(maas_ustunde_olanlar)
 print("---------------------")
 print("Maaşı 15000 TL üzerinde olanların toplam sayısı:", toplam_maas_ustunde_olanlar)
 print("---------------------")
 print()
 
-siralanan_df = df.sort_values('yeni_maas')
+siralanan_df = df.sort_values('yeni_maas').reset_index(drop=True)
 print("Yeni Maaşa Göre Küçükten Büyüğe Sıralanmış Veriler:")
 print()
-print(siralanan_df.to_string(index=False))
+print(siralanan_df.to_string(index=True))
 print()
 
-tecrube_ustunde_beyazyakalar = df[(df['nesne'] == 'beyaz yaka') & (df['tecrube'] > 3)]
+tecrube_ustunde_beyazyakalar = df[(df['nesne'] == 'beyaz yaka') & (df['tecrube'] > 3)].reset_index(drop=True)
 print("Tecrübesi 3 yıldan fazla olan beyaz yakalar:")
-print(tecrube_ustunde_beyazyakalar.to_string(index=False))
+print(tecrube_ustunde_beyazyakalar.to_string(index=True))
 print()
 
-yeni_maas_ustunde_olanlar = df[df['yeni_maas'] > 10000]
+yeni_maas_ustunde_olanlar = df[df['yeni_maas'] > 10000].reset_index(drop=True)
 satir_secimi = yeni_maas_ustunde_olanlar.iloc[2:5, [1, 12]]
 print("Yeni Maaş Değeri 10000 TL üzerinde olanların tc no ve yeni maaş değerleri:")
-print(satir_secimi.to_string(index=False))
+print(satir_secimi.to_string(index=True))
 print()
 
 yeni_df = df[['ad', 'soyad', 'sektor', 'yeni_maas']]
 print("Yeni DataFrame:")
-print(yeni_df.to_string(index=False))
+print(yeni_df.to_string(index=True))
 print()
 
 # DataFrame'i Excel dosyasına kaydetme
-df.to_excel("veriler.xlsx", index=False)
+df.to_excel("veriler.xlsx", index=True)
