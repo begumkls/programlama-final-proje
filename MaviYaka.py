@@ -32,26 +32,26 @@ class MaviYaka(Calisan): # Calisan sınıfından türerilen MaviYaka sınıfı o
             maas = self.get_maas()
             tecrube = self.get_tecrube()
 
-            if tecrube < 2:
-                zam_orani = self.__yipranma_payi * 10
-            elif tecrube >= 2 and tecrube <= 4 and maas < 15000:
-                zam_orani = ((maas % tecrube) / 2) + (self.__yipranma_payi * 10)
-            elif tecrube > 4 and maas < 25000:
-                zam_orani = ((maas % tecrube) / 3) + (self.__yipranma_payi * 10)
+            if tecrube < 24:
+                zam_orani = ( self.__yipranma_payi * 10 ) / 100
+            elif tecrube >= 24 and tecrube <= 48 and maas < 15000:
+                zam_orani = ( ((maas % tecrube) / 2) + (self.__yipranma_payi * 10) ) / 100
+            elif tecrube > 48 and maas < 25000:
+                zam_orani = (((maas % tecrube) / 3) + (self.__yipranma_payi * 10)) / 100
             else:
                 zam_orani = 0
                 
-            yeni_maas = maas * zam_orani
+            self.__yeni_maas = maas + (maas * zam_orani)
             
-            if yeni_maas == maas:
-                yeni_maas = maas
+            if self.__yeni_maas == maas:
+                self.__yeni_maas = maas
             else:
-                return yeni_maas
+                return self.__yeni_maas
 
         except Exception as e: # oluşacak bir hatanın kontrolü try except blokları ile yapıldı
             print("Hata:", str(e))
             return None
 
     def __str__(self): # Ekrana bilgilerin yazdırılmasını sağlayan str fonksiyonu oluşturuldu
-        yeni_maas = self.zam_hakki()
-        return f"\n\n------ Mavi Yaka ------ \nAd: {self.get_ad()}\nSoyad: {self.get_soyad()}\nTecrübe: {self.get_tecrube()} yıl\nYeni Maaş: {yeni_maas:.2f}"
+        self.zam_hakki()
+        return f"\n\n------ Mavi Yaka ------ \nAd: {self.get_ad()}\nSoyad: {self.get_soyad()}\nTecrübe: {self.get_tecrube()} Ay\nYeni Maaş: {self.__yeni_maas:.2f}"

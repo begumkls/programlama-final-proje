@@ -27,6 +27,10 @@ class Calisan(Insan): # Insan sınıfından türetilen Calisan sınıfı oluştu
 
     def set_maas(self, maas):
         self.__maas = maas
+        
+    def yeni_maas(self):
+        return self.__yeni_maas
+    
     # kullanıcıdan alınan sektör girişinin kontrolünü yapan fonksiyon oluşturuldu    
     def sektor_kontrol(self, sektor):
         sektorler = ["teknoloji", "muhasebe", "inşaat", "diğer"]
@@ -45,13 +49,13 @@ class Calisan(Insan): # Insan sınıfından türetilen Calisan sınıfı oluştu
             if tecrube < 24:
                 zam_orani = 0
             elif tecrube >= 24 and tecrube <= 48 and maas < 15000:
-                zam_orani = maas % tecrube
+                zam_orani = (maas % tecrube) /100
             elif tecrube > 48 and maas < 25000:
-                zam_orani = (maas % tecrube)/ 2
+                zam_orani = ((maas % tecrube)/ 2) / 100
             else:
                 zam_orani = 0
 
-            self.__yeni_maas = maas * zam_orani
+            self.__yeni_maas = maas + (maas * zam_orani)
 
             if self.__yeni_maas == maas:
                 self.__yeni_maas = maas

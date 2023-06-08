@@ -70,18 +70,18 @@ try:
     print()
 
     # MaviYaka sınıfı için nesneler atandı
-    maviyaka1 = MaviYaka("55555555555", "Gürkan", "Sedef", 32, "Erkek", "Türk", 2, 7500, 0.5)
-    maviyaka2 = MaviYaka("98546715840", "Zeynep", "Demir", 35, "Kadın", "Türk", 6, 15100, 0.2)
-    maviyaka3 = MaviYaka("00005485694", "Murat", "Kara", 42, "Erkek", "Türk", 5, 9000, 0.3)
+    maviyaka1 = MaviYaka("55555555555", "Gürkan", "Sedef", 32, "Erkek", "Türk", 24, 7500, 0.5)
+    maviyaka2 = MaviYaka("98546715840", "Zeynep", "Demir", 35, "Kadın", "Türk", 73, 15100, 0.2)
+    maviyaka3 = MaviYaka("00005485694", "Murat", "Kara", 42, "Erkek", "Türk", 58, 9000, 0.3)
     print("Mavi Yaka Bilgileri:")
     print(maviyaka1)
     print(maviyaka2)
     print(maviyaka3)
     print()
     # BeyazYaka sınıfı için nesneler atandı
-    beyazyaka1 = BeyazYaka("11111111111", "Burak", "Yılmaz", 31, "Erkek", "Türk", 4, 8750, 1200)
-    beyazyaka2 = BeyazYaka("22222222222", "Sıla", "Demir", 36, "Kadın", "Türk", 5, 9000, 1600)
-    beyazyaka3 = BeyazYaka("33333333333", "Barış", "Kaya", 29, "Erkek", "Türk", 1, 5000, 500)
+    beyazyaka1 = BeyazYaka("11111111111", "Burak", "Yılmaz", 31, "Erkek", "Türk", 47, 8750, 1200)
+    beyazyaka2 = BeyazYaka("22222222222", "Sıla", "Demir", 36, "Kadın", "Türk", 55, 7000, 600)
+    beyazyaka3 = BeyazYaka("33333333333", "Barış", "Kaya", 29, "Erkek", "Türk", 19, 5000, 500)
     print("Beyaz Yaka Bilgileri:")
     print(beyazyaka1)
     print(beyazyaka2)
@@ -108,19 +108,19 @@ calisan_data = ['çalışan', calisan3.get_tc_no(), calisan3.get_ad(), calisan3.
 df.loc[len(df)] = calisan_data
 
 # Mavi Yakalıların Nesnesi
-maviyaka_data = ['mavi yaka', maviyaka1.get_tc_no(), maviyaka1.get_ad(), maviyaka1.get_soyad(), maviyaka1.get_yas(), maviyaka1.get_cinsiyet(), maviyaka1.get_uyruk(), '', maviyaka1.get_tecrube(), maviyaka1.get_maas(), maviyaka1.get_yipranma_payi(), 0, maviyaka1.zam_hakki()]
+maviyaka_data = ['mavi yaka', maviyaka1.get_tc_no(), maviyaka1.get_ad(), maviyaka1.get_soyad(), maviyaka1.get_yas(), maviyaka1.get_cinsiyet(), maviyaka1.get_uyruk(), '', maviyaka1.get_tecrube() // 12, maviyaka1.get_maas(), maviyaka1.get_yipranma_payi(), 0, maviyaka1.zam_hakki()]
 df.loc[len(df)] = maviyaka_data
-maviyaka_data = ['mavi yaka', maviyaka2.get_tc_no(), maviyaka2.get_ad(), maviyaka2.get_soyad(), maviyaka2.get_yas(), maviyaka2.get_cinsiyet(), maviyaka2.get_uyruk(), '', maviyaka2.get_tecrube(), maviyaka2.get_maas(), maviyaka2.get_yipranma_payi(), 0, maviyaka2.zam_hakki()]
+maviyaka_data = ['mavi yaka', maviyaka2.get_tc_no(), maviyaka2.get_ad(), maviyaka2.get_soyad(), maviyaka2.get_yas(), maviyaka2.get_cinsiyet(), maviyaka2.get_uyruk(), '', maviyaka2.get_tecrube() // 12, maviyaka2.get_maas(), maviyaka2.get_yipranma_payi(), 0, maviyaka2.zam_hakki()]
 df.loc[len(df)] = maviyaka_data
-maviyaka_data = ['mavi yaka', maviyaka3.get_tc_no(), maviyaka3.get_ad(), maviyaka3.get_soyad(), maviyaka3.get_yas(), maviyaka3.get_cinsiyet(), maviyaka3.get_uyruk(), '', maviyaka3.get_tecrube(), maviyaka3.get_maas(), maviyaka3.get_yipranma_payi(), 0, maviyaka3.zam_hakki()]
+maviyaka_data = ['mavi yaka', maviyaka3.get_tc_no(), maviyaka3.get_ad(), maviyaka3.get_soyad(), maviyaka3.get_yas(), maviyaka3.get_cinsiyet(), maviyaka3.get_uyruk(), '', maviyaka3.get_tecrube() // 12, maviyaka3.get_maas(), maviyaka3.get_yipranma_payi(), 0, maviyaka3.zam_hakki()]
 df.loc[len(df)] = maviyaka_data
 
 # Beyaz Yakalıların Nesnesi
-beyazyaka_data = ['beyaz yaka', beyazyaka1.get_tc_no(), beyazyaka1.get_ad(), beyazyaka1.get_soyad(), beyazyaka1.get_yas(), beyazyaka1.get_cinsiyet(), beyazyaka1.get_uyruk(), '', beyazyaka1.get_tecrube(), beyazyaka1.get_maas(), 0, beyazyaka1.get_tesvik_primi(), beyazyaka1.zam_hakki()]
+beyazyaka_data = ['beyaz yaka', beyazyaka1.get_tc_no(), beyazyaka1.get_ad(), beyazyaka1.get_soyad(), beyazyaka1.get_yas(), beyazyaka1.get_cinsiyet(), beyazyaka1.get_uyruk(), '', beyazyaka1.get_tecrube() // 12, beyazyaka1.get_maas(), 0, beyazyaka1.get_tesvik_primi(), beyazyaka1.zam_hakki()]
 df.loc[len(df)] = beyazyaka_data
-beyazyaka_data = ['beyaz yaka', beyazyaka2.get_tc_no(), beyazyaka2.get_ad(), beyazyaka2.get_soyad(), beyazyaka2.get_yas(), beyazyaka2.get_cinsiyet(), beyazyaka2.get_uyruk(), '', beyazyaka2.get_tecrube(), beyazyaka2.get_maas(), 0, beyazyaka2.get_tesvik_primi(), beyazyaka2.zam_hakki()]
+beyazyaka_data = ['beyaz yaka', beyazyaka2.get_tc_no(), beyazyaka2.get_ad(), beyazyaka2.get_soyad(), beyazyaka2.get_yas(), beyazyaka2.get_cinsiyet(), beyazyaka2.get_uyruk(), '', beyazyaka2.get_tecrube() // 12, beyazyaka2.get_maas(), 0, beyazyaka2.get_tesvik_primi(), beyazyaka2.zam_hakki()]
 df.loc[len(df)] = beyazyaka_data
-beyazyaka_data = ['beyaz yaka', beyazyaka3.get_tc_no(), beyazyaka3.get_ad(), beyazyaka3.get_soyad(), beyazyaka3.get_yas(), beyazyaka3.get_cinsiyet(), beyazyaka3.get_uyruk(), '', beyazyaka3.get_tecrube(), beyazyaka3.get_maas(), 0, beyazyaka3.get_tesvik_primi(), beyazyaka3.zam_hakki()]
+beyazyaka_data = ['beyaz yaka', beyazyaka3.get_tc_no(), beyazyaka3.get_ad(), beyazyaka3.get_soyad(), beyazyaka3.get_yas(), beyazyaka3.get_cinsiyet(), beyazyaka3.get_uyruk(), '', beyazyaka3.get_tecrube() // 12, beyazyaka3.get_maas(), 0, beyazyaka3.get_tesvik_primi(), beyazyaka3.zam_hakki()]
 df.loc[len(df)] = beyazyaka_data
 
 # DataFrame üzerinde gruplama ve ortalama hesaplama
@@ -156,7 +156,7 @@ print(tecrube_ustunde_beyazyakalar.to_string(index=True))
 yeni_maas_ustunde_olanlar = df[df['yeni_maas'] > 10000].reset_index(drop=True)
 satir_secimi = yeni_maas_ustunde_olanlar.iloc[2:5, [1, 12]]
 print("\n----------------------------------------------------------\n")
-print("Yeni Maaş Değeri 10000 TL üzerinde olanların tc no ve yeni maaş değerleri:\n")
+print("Yeni Maaş Değeri 10000 TL üzerinde olanlardan 2 ile 5. satır arasındakilerin tc no ve yeni maaş değerleri:\n")
 print(satir_secimi.to_string(index=True, float_format="{:.2f}".format))
 
 # Mevcut DataFrame'deki ad, soyad, sektor, yeni_maas değerlerinden yeni DataFrame oluşturma

@@ -18,26 +18,26 @@ class BeyazYaka(Calisan): # Calisan sınıfından türetilen BeyazYaka sınıfı
             maas = self.get_maas()
             tecrube = self.get_tecrube()
 
-            if tecrube < 2:
+            if tecrube < 24:
                 zam = self.__tesvik_primi
-            elif tecrube >= 2 and tecrube <= 4 and maas < 15000:
+            elif tecrube >= 24 and tecrube <= 48 and maas < 15000:
                 zam = (maas % tecrube) * 5 + self.__tesvik_primi
-            elif tecrube > 4 and maas < 25000:
-                zam = (maas * tecrube ) * 4 + self.__tesvik_primi
+            elif tecrube > 48 and maas < 25000:
+                zam = (maas % tecrube ) * 4 + self.__tesvik_primi
             else:
                 zam = 0
             
-            yeni_maas = maas + zam
+            self.__yeni_maas = maas + zam
             
-            if yeni_maas == maas:
-                yeni_maas = maas
+            if self.__yeni_maas == maas:
+                self.__yeni_maas = maas
             else:
-                return yeni_maas
+                return self.__yeni_maas
                 
         except Exception as e: # oluşacak bir hatanın kontrolü try except blokları ile yapıldı
             print("Hata:", str(e))
             return None
 
     def __str__(self): # Ekrana bilgilerin yazdırılmasını sağlayan str fonksiyonu oluşturuldu
-        yeni_maas = self.zam_hakki()
-        return f"\n\n------ Beyaz Yaka ------\nAd: {self.get_ad()}\nSoyad: {self.get_soyad()}\nTecrübe: {self.get_tecrube()} yıl\nYeni maas: {yeni_maas:.2f}"
+        self.zam_hakki()
+        return f"\n\n------ Beyaz Yaka ------\nAd: {self.get_ad()}\nSoyad: {self.get_soyad()}\nTecrübe: {self.get_tecrube()} Ay\nYeni maas: {self.__yeni_maas:.2f}"
